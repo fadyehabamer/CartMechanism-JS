@@ -71,6 +71,5 @@ function setItem(product) {
         }
     }
 
-    console.log(ItemCart);
     localStorage.setItem('productInCart', JSON.stringify(ItemCart))
 }
