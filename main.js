@@ -25,12 +25,12 @@ let products = [
         incart: 0
     },
     {
-        name: 'laptop4',
+        name: 'laptop5',
         price: 500,
         incart: 0
     },
     {
-        name: 'laptop4',
+        name: 'laptop6',
         price: 600,
         incart: 0
     }
