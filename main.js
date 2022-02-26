@@ -52,7 +52,6 @@ function cartItems(product) {
     if (savedItems) {
         localStorage.setItem('CartItems', savedItems + 1)
         cartCounter.textContent = savedItems + 1
-        // console.log(savedItems);
     } else {
         localStorage.setItem('CartItems', 1)
         cartCounter.textContent = '1'
@@ -75,7 +74,7 @@ function setItem(product) {
 
         ItemCart[product.name].incart += 1
     } else {
-        product.inCart = 1
+        product.incart = 1
         ItemCart = {
             [product.name]: product
         }
@@ -95,3 +94,31 @@ function totalCost(product) {
         localStorage.setItem('totalCost', product.price)
     }
 }
+
+function displayCart() {
+    let cartItems = JSON.parse(localStorage.getItem('productInCart'))
+    let cartContainer = document.getElementById('cartContainer')
+    if (cartItems && cartContainer) {
+        Object.values(cartItems).map(item => {
+            cartContainer.innerHTML +=
+                `<tr>
+                    <th scope="row"> ${item.name} </th>
+                    <td>${item.price}</td>
+                    <td>  ${item.incart}  </td>
+                    <td> $ ${(item.incart) * item.price}</td>
+                </tr>
+            `
+        })
+        let cartTotal = localStorage.getItem('totalCost');
+
+        cartContainer.innerHTML +=
+            `
+                <tr class='table-dark'>
+                    <td colspan='2'> Cart Total </td>
+                    <td colspan='2'> ${cartTotal}  </td>
+                </tr>
+            `
+    }
+}
+
+displayCart()
